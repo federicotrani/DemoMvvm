@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoMvvm.Mvvm.Views.LoginPage"
+             xmlns:vm="clr-namespace:DemoMvvm.Mvvm.ViewModels"
+             x:DataType="vm:LoginViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Margin="10">
+        <Label 
+        TextColor="DarkMagenta"
+        FontAttributes="Bold"
+        Text="Bienvenid@s"
+        FontSize="Large"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+        <Image Source="dotnet_bot.png" Margin="0,20" WidthRequest="200" />
+
+        <Label Text="Ingrese su Usuario" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+        <Entry   
+            WidthRequest="300"
+            Text="{Binding Name}"
+            TextColor="Black"        
+            HorizontalOptions="Center"/>
+
+        <Label Text="Ingrese su Password" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+        <Entry         
+            Text="{Binding Password}"
+            WidthRequest="300"
+            IsPassword="True" 
+            TextColor="Black" 
+            HorizontalOptions="Center"/>
+
+        <Button 
+            Command="{Binding LoginCommand}"
+            WidthRequest="300"
+            TextColor="WhiteSmoke"
+            BackgroundColor="DarkBlue"
+            Text="INGRESAR"         
+            Margin="0,20"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+        <Label Text="ITES - 2024" TextColor="DarkBlue" HorizontalOptions="Center" FontSize="Micro" />
+
+    </VerticalStackLayout>
+</ContentPage>
